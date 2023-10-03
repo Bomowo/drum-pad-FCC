@@ -1,12 +1,13 @@
-
+import {useState} from 'react'
 
 function App() {
+  const [display, setDisplay] = useState(null)
 
   function pressKeyboard (e) {
     const audio = document.getElementById(e.key.toUpperCase());
 
     if(audio !== null ) {
-      console.log(`playing ${e.key.toUpperCase()}`)
+      setDisplay(audio.parentElement.id)
       audio.play()
     }
 
@@ -14,12 +15,13 @@ function App() {
 
   function clickOnPad (e) {
     const audio = e.target.children[0]
+    setDisplay(e.target.id)
     audio.play();
   }
 
   return (
     <div id="drum-machine" className="drum-machine" onKeyDown={pressKeyboard} tabIndex='0'>
-        <div id="display"></div>
+        <div id="display">{display}</div>
         <div className="drum-pad" id="Heater-1" onClick={clickOnPad}>
           <audio className="clip" id="Q" src="https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3"></audio>
           Q
