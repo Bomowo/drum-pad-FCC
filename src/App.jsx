@@ -9,6 +9,7 @@ function App() {
 
     if(audio !== null ) {
       setDisplay(audio.parentElement.id)
+      audio.currentTime = 0
       audio.play()
     }
 
@@ -17,6 +18,7 @@ function App() {
   function clickOnPad (e) {
     const audio = e.target.children[0]
     setDisplay(e.target.id)
+    audio.currentTime = 0
     audio.play();
   }
 
